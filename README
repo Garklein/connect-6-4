@@ -7,7 +7,7 @@ This is a version of connect 4 that completes the bitwise gamedev challenge (htt
 
 The 64 bits of state encode the board, player initials, and the score. It also keeps track of the latest winner, to determine who goes first next game.
 
-To encode the board, I use the algorithm described in Yokota 2022[0]. Each column is encoded in 7 bits. A column has n zero bits, where n is the number of empty spaces, then a single one, then the remainder of the bits are one for red and zero for yellow. In other words, the first one separates empty space and pieces. (My version actually has the filled spaces in each column reversed, but it's the same idea.)
+To encode the board, I use the algorithm described in Yokota 2022[0]. Each column is encoded in 7 bits. A column has n `0` bits, where n is the number of empty spaces, then a single `1`, then the remainder of the bits are `1` for red and `0` for yellow. In other words, the first `1` separates empty space and pieces. (My version actually has the filled spaces in each column reversed, but it's the same idea.)
 
 This is 49 bits (7 bits/column * 7 columns). I knock off the last bit, because it can be retrieved from the proceeding 48 bits. I then use 1 bit for the starting turn, 5 bits for each player's initial, and 5 bits for the score, for a total of 64 bits.
 
